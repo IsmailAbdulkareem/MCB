@@ -1,107 +1,128 @@
 'use client';
 import { useState } from 'react';
+import Image from "next/image";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const carouselImages = [
+  '/images/concrete.jpg',
+  '/images/windows.jpg',
+  '/images/plumbing.jpg',
+  '/images/roofing.jpg',
+  '/images/complete electrical.jpg',
+  '/images/completerodeling.jpg',
+  '/images/remodeling.jpg',
+  '/images/Handyman.jpg',
+  '/images/electrical.jpg',
+  '/images/roofing.jpg'
+];
 
 const faqs = [
   {
-    question: 'How do I find a professional for my project?',
-    answer: 'You can browse our services page to find the type of professional you need. Each service category has a list of qualified professionals in your area. You can also use our search function to find specific services.'
+    question: "What services do you offer?",
+    answer: "We offer a wide range of services including plumbing, electrical, HVAC, remodeling, roofing, painting, cleaning, window installation, concrete work, and general handyperson tasks."
   },
   {
-    question: 'How are professionals vetted?',
-    answer: 'All professionals on our platform go through a thorough verification process, including background checks, license verification, and review of their previous work. We also collect and verify customer reviews to ensure quality.'
+    question: "How can I request a quote or schedule a service?",
+    answer: "You can request a free quote or schedule a service by filling out our contact form, calling us, or visiting our office. We aim to respond within 24 hours."
   },
   {
-    question: 'How do I get a quote for my project?',
-    answer: 'You can request a quote by filling out our contact form with details about your project. A professional will review your request and provide you with a detailed quote. You can also directly contact professionals through their profiles.'
+    question: "Are your contractors licensed and insured?",
+    answer: "Yes, all our contractors are licensed, insured, and experienced in their respective trades to ensure safety and quality service."
   },
   {
-    question: 'What if I\'m not satisfied with the work?',
-    answer: 'We have a satisfaction guarantee policy. If you\'re not satisfied with the work, please contact us immediately. We\'ll work with you and the professional to resolve any issues.'
+    question: "Do you offer emergency repair services?",
+    answer: "Absolutely! We provide emergency repair services 24/7 for plumbing, electrical, and other urgent repairs. Just call our emergency hotline."
   },
   {
-    question: 'How do payments work?',
-    answer: 'Payments are made directly to the professional after the work is completed to your satisfaction. We recommend discussing payment terms with the professional before starting the project.'
+    question: "How long does a typical project take?",
+    answer: "Project timelines vary based on the scope. Minor repairs may take a few hours, while remodeling projects can span several days. We always provide an estimated timeline before starting."
   },
   {
-    question: 'Are the professionals insured?',
-    answer: 'Yes, all professionals on our platform are required to have proper insurance coverage. This includes general liability insurance and workers\' compensation where applicable.'
+    question: "Can I choose the materials used for my project?",
+    answer: "Yes, clients are welcome to choose materials. We also offer recommendations based on budget and project type to ensure the best results."
   },
   {
-    question: 'How do I leave a review?',
-    answer: 'After your project is completed, you\'ll receive an email with a link to leave a review. You can also log into your account and leave a review through the project history section.'
+    question: "Do you provide warranties on your services?",
+    answer: "Yes, we provide a satisfaction guarantee and offer warranties on all major work. Specific terms depend on the service category."
   },
   {
-    question: 'What areas do you service?',
-    answer: 'We currently service major metropolitan areas across the country. You can check if we\'re available in your area by entering your zip code on our homepage.'
+    question: "How do you ensure safety on construction sites?",
+    answer: "Safety is our top priority. Our team follows strict safety protocols and is trained regularly on the latest construction safety standards."
+  },
+  {
+    question: "Do you handle permits and inspections?",
+    answer: "Yes, we assist with all necessary permits and arrange inspections where required, to ensure your project meets local regulations."
+  },
+  {
+    question: "Are your practices eco-friendly?",
+    answer: "We prioritize sustainable practices by using eco-friendly materials, reducing waste, and promoting energy-efficient solutions whenever possible."
   }
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    beforeChange: (current: number, next: number) => setCurrentSlide(next),
+    arrows: true,
+    fade: true,
+    cssEase: 'linear'
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-16">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-              Frequently Asked Questions
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Find answers to common questions about our services
-            </p>
-          </div>
-        </div>
+      <section className="relative h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
+        <Slider {...settings}>
+          {carouselImages.map((image, index) => (
+            <div key={index} className="relative h-[400px] sm:h-[500px] md:h-[600px]">
+              <Image
+                src={image}
+                alt={`Construction project ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-[#36454F] bg-opacity-50 flex items-center justify-center">
+                <div className="text-center text-white px-4">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+                    Frequently Asked Questions
+                  </h1>
+                  <p className="text-lg sm:text-xl mb-8">
+                    Find answers to common questions about our services
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="border border-gray-200 rounded-lg overflow-hidden"
-                >
-                  <button
-                    className="w-full px-6 py-4 text-left focus:outline-none"
-                    onClick={() => toggleFAQ(index)}
-                  >
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        {faq.question}
-                      </h3>
-                      <svg
-                        className={`h-6 w-6 transform transition-transform ${
-                          openIndex === index ? 'rotate-180' : ''
-                        }`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                  </button>
-                  {openIndex === index && (
-                    <div className="px-6 py-4 bg-gray-50">
-                      <p className="text-gray-500">{faq.answer}</p>
-                    </div>
-                  )}
+                <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600">
+                    {faq.answer}
+                  </p>
                 </div>
               ))}
             </div>
@@ -109,27 +130,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* Contact CTA Section */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              Still have questions?
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Contact us directly and we'll be happy to help
-            </p>
-            <div className="mt-6">
-              <a
-                href="/contact"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-              >
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </main>
   );
 } 

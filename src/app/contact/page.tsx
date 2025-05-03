@@ -1,15 +1,48 @@
 'use client';
 import { useState } from 'react';
+import Image from "next/image";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const carouselImages = [
+  '/images/concrete.jpg',
+  '/images/windows.jpg',
+  '/images/plumbing.jpg',
+  '/images/roofing.jpg',
+  '/images/complete electrical.jpg',
+  '/images/completermodeling.jpg',
+  '/images/remodeling.jpg',
+  '/images/Handyman.jpg',
+  '/images/electrical.jpg',
+  '/images/roofing.jpg'
+];
 
 export default function Contact() {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: '',
-    message: '',
+    message: ''
   });
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    beforeChange: (current: number, next: number) => setCurrentSlide(next),
+    arrows: true,
+    fade: true,
+    cssEase: 'linear'
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,31 +59,63 @@ export default function Contact() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-16">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-              Contact Us
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Get in touch with us for any questions or inquiries
-            </p>
-          </div>
-        </div>
+      <section className="relative h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
+        <Slider {...settings}>
+          {carouselImages.map((image, index) => (
+            <div key={index} className="relative h-[400px] sm:h-[500px] md:h-[600px]">
+              <Image
+                src={image}
+                alt={`Construction project ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-[#36454F] bg-opacity-50 flex items-center justify-center">
+                <div className="text-center text-white px-4">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+                    Contact Us
+                  </h1>
+                  <p className="text-lg sm:text-xl mb-8">
+                    Get in touch with our team
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </section>
 
-      {/* Contact Form Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
-                Send us a Message
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Address</h3>
+                  <p className="text-gray-600">123 Construction Street, Building City, BC 12345</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
+                  <p className="text-gray-600">(123) 456-7890</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Email</h3>
+                  <p className="text-gray-600">info@mcbcontractor.com</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">Business Hours</h3>
+                  <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                  <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
+                  <p className="text-gray-600">Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+            <div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -66,7 +131,6 @@ export default function Contact() {
                     required
                   />
                 </div>
-
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email
@@ -81,7 +145,6 @@ export default function Contact() {
                     required
                   />
                 </div>
-
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                     Phone
@@ -93,11 +156,11 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    required
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-black">
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700">
                     Service Needed
                   </label>
                   <select
@@ -105,11 +168,11 @@ export default function Contact() {
                     id="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="mt-1 block w-full rounded-md text-black border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    required
                   >
                     <option value="">Select a service</option>
-                    <option value="handyperson">Handyperson</option>
-                    <option value="landscaping">Landscaping</option>
+                    <option value="handyperson">Handyperson Services</option>
                     <option value="plumbing">Plumbing</option>
                     <option value="electrical">Electrical</option>
                     <option value="remodeling">Remodeling</option>
@@ -121,23 +184,20 @@ export default function Contact() {
                     <option value="concrete">Concrete</option>
                   </select>
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-black">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                     Message
                   </label>
                   <textarea
-                    color='black'
                     name="message"
                     id="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     required
                   />
                 </div>
-
                 <div>
                   <button
                     type="submit"
@@ -148,48 +208,11 @@ export default function Contact() {
                 </div>
               </form>
             </div>
-
-            <div className="lg:pl-8">
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
-                Contact Information
-              </h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Address</h3>
-                  <p className="mt-2 text-gray-500">
-                    123 Main Street<br />
-                    City, State 12345<br />
-                    United States
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                  <p className="mt-2 text-gray-500">
-                    +1 (555) 123-4567
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <p className="mt-2 text-gray-500">
-                    info@homefix.com
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Business Hours</h3>
-                  <p className="mt-2 text-gray-500">
-                    Monday - Friday: 9:00 AM - 6:00 PM<br />
-                    Saturday: 10:00 AM - 4:00 PM<br />
-                    Sunday: Closed
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 } 

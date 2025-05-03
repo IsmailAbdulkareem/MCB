@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">HomeFix</h3>
+            <h3 className="text-lg font-semibold mb-4">MCB</h3>
             <p className="text-gray-400">
               Connecting homeowners with trusted professionals for all home improvement needs.
             </p>
@@ -45,7 +45,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/handyperson" className="text-gray-400 hover:text-white">
+                <Link href="/services/handyman" className="text-gray-400 hover:text-white">
                   Handyperson
                 </Link>
               </li>
@@ -60,8 +60,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/cleaning" className="text-gray-400 hover:text-white">
-                  Cleaning
+                <Link href="/services/windows" className="text-gray-400 hover:text-white">
+                  Windows
                 </Link>
               </li>
             </ul>
@@ -72,9 +72,9 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
               <li>123 Main Street</li>
-              <li>City, State 12345</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: info@homefix.com</li>
+              <li>Karachi , Gazi Goth</li>
+              <li>Phone:+92 3052200135</li>
+              <li>Email:MCB@gmail.com</li>
             </ul>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 HomeFix. All rights reserved.
+              © 2024 MCB. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-400 hover:text-white text-sm">
