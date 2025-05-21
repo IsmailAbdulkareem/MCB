@@ -32,7 +32,7 @@ export default function ServiceDetailPage() {
           </div>
           <div>
             <p className="text-gray-600 text-lg mb-4">{service.description}</p>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Price: ₹{service.price}</h3>
+            
           </div>
         </div>
       </section>

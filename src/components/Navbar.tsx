@@ -20,13 +20,13 @@ export default function Navbar() {
               height={45}
               className="rounded-md"
             />
-            <span className="ml-2 font-bold text-lg text-gray-800">MCB</span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden sm:flex space-x-4 items-center">
             <NavLink href="/about">About Us</NavLink>
             <NavLink href="/services">Services</NavLink>
+            <NavLink href="/projects">Projects</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/contact">Contact</NavLink>
             <SignedOut>
@@ -42,25 +42,23 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="sm:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-md text-gray-600 hover:text-gray-800"
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="sm:hidden p-2 rounded-md text-gray-600 hover:text-gray-800"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -69,6 +67,7 @@ export default function Navbar() {
         <div className="sm:hidden px-4 pb-4 space-y-2 bg-white shadow-md">
           <NavLink href="/about" mobile>About Us</NavLink>
           <NavLink href="/services" mobile>Services</NavLink>
+          <NavLink href="/projects" mobile>Projects</NavLink>
           <NavLink href="/faq" mobile>FAQ</NavLink>
           <NavLink href="/contact" mobile>Contact</NavLink>
           <SignedOut>

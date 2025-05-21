@@ -1,75 +1,62 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Slider from 'react-slick';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const services = [
-  { name: 'Handyperson', icon: '🔧', href: '/services/handyperson' },
-  { name: 'Landscaping', icon: '🌿', href: '/services/landscaping' },
-  { name: 'Plumbing', icon: '🚰', href: '/services/plumbing' },
-  { name: 'Electrical', icon: '⚡', href: '/services/electrical' },
-  { name: 'Remodeling', icon: '🏠', href: '/services/remodeling' },
-  { name: 'Roofing', icon: '🏗️', href: '/services/roofing' },
-  { name: 'Painting', icon: '🎨', href: '/services/painting' },
-  { name: 'Cleaning', icon: '🧹', href: '/services/cleaning' },
-  { name: 'HVAC', icon: '❄️', href: '/services/hvac' },
-  { name: 'Windows', icon: '🪟', href: '/services/windows' },
-  { name: 'Concrete', icon: '🏢', href: '/services/concrete' },
-];
-       
 const popularProjects = [
   {
     name: 'Handyperson Services',
     rating: 4.7,
     reviews: '1.2k+',
-    price: 85,
     icon: '🔧',
-    image: '/images/Handyman.jpg'
+    image: '/images/Handyman.jpg',
+    whatsapp: 'https://wa.me/your-number'
   },
   {
     name: 'Plumbing Services',
     rating: 4.5,
     reviews: '2.3k+',
-    price: 120,
     icon: '🚰',
-    image: '/images/plumbing.jpg'
+    image: '/images/plumbing.jpg',
+    whatsapp: 'https://wa.me/your-number'
   },
   {
     name: 'Electrical Work',
     rating: 4.8,
     reviews: '1.8k+',
-    price: 150,
     icon: '⚡',
-    image: '/images/electrical.jpg'
+    image: '/images/electrical.jpg',
+    whatsapp: 'https://wa.me/your-number'
   },
   {
     name: 'Window Installation',
     rating: 4.7,
     reviews: '900+',
-    price: 450,
     icon: '🪟',
-    image: '/images/windows.jpg'
+    image: '/images/windows.jpg',
+    whatsapp: 'https://wa.me/your-number'
   },
   {
     name: 'Concrete Work',
     rating: 4.5,
     reviews: '1.1k+',
-    price: 800,
     icon: '🏢',
-    image: '/images/concrete.jpg'
+    image: '/images/concrete.jpg',
+    whatsapp: 'https://wa.me/your-number'
   },
   {
     name: 'Remodeling',
     rating: 4.6,
     reviews: '1.4k+',
-    price: 5000,
     icon: '🏠',
-    image: '/images/remodeling.jpg'
+    image: '/images/remodeling.jpg',
+    whatsapp: 'https://wa.me/your-number'
   }
 ];
 
@@ -78,15 +65,13 @@ const homeProjects = [
     name: 'Complete Home Remodeling',
     rating: 4.8,
     reviews: '450+',
-    price: 15000,
     category: 'Remodeling',
-    image: '/images/completermodeling.jpg'
+    image: '/images/completermodeling.png'
   },
   {
     name: 'Electrical System Upgrade',
     rating: 4.7,
     reviews: '320+',
-    price: 2500,
     category: 'Electrical',
     image: '/images/complete electrical.jpg'
   },
@@ -94,7 +79,6 @@ const homeProjects = [
     name: 'Roof Replacement',
     rating: 4.6,
     reviews: '280+',
-    price: 8000,
     category: 'Roofing',
     image: '/images/roofing.jpg'
   }
@@ -105,7 +89,6 @@ const maintenanceServices = [
     name: 'Plumbing System Maintenance',
     rating: 4.5,
     reviews: '520+',
-    price: 150,
     category: 'Plumbing',
     image: '/images/plumbing.jpg'
   },
@@ -113,7 +96,6 @@ const maintenanceServices = [
     name: 'Window Replacement',
     rating: 4.7,
     reviews: '380+',
-    price: 600,
     category: 'Windows',
     image: '/images/windows.jpg'
   },
@@ -121,7 +103,6 @@ const maintenanceServices = [
     name: 'Concrete Repair & Installation',
     rating: 4.4,
     reviews: '420+',
-    price: 1200,
     category: 'Concrete',
     image: '/images/concrete.jpg'
   }
@@ -140,6 +121,81 @@ const carouselImages = [
   '/images/roofing.jpg'
 ];
 
+const testimonials = [
+  {
+    name: 'Ahmed Khan',
+    role: 'Business Owner',
+    image: '/images/testimonial1.jpg',
+    text: 'MCB delivered our factory project on time and within budget. Their attention to detail and quality of work is exceptional.',
+    rating: 5
+  },
+  {
+    name: 'Ismail Abdul Kareem',
+    role: 'Property Developer',
+    image: '/images/testimonial2.jpg',
+    text: 'The villa construction exceeded our expectations. The team was professional and the end result is stunning.',
+    rating: 4
+  },
+  {
+    name: 'Usman Ali',
+    role: 'Real Estate Investor',
+    image: '/images/testimonial3.jpg',
+    text: 'We\'ve worked with MCB on multiple highrise projects. Their expertise in large-scale construction is unmatched.',
+    rating: 5
+  }
+];
+
+const specializedServices = [
+  {
+    name: 'Aluminum Work',
+    rating: 4.9,
+    reviews: '850+',
+    icon: '🏗️',
+    image: '/images/aluminum.jpg',
+    description: 'Professional aluminum fabrication and installation services'
+  },
+  {
+    name: 'Door Installation',
+    rating: 4.8,
+    reviews: '720+',
+    icon: '🚪',
+    image: '/images/door.jpg',
+    description: 'Complete door installation with expert finishing'
+  },
+  {
+    name: 'Villa Excavation',
+    rating: 4.7,
+    reviews: '450+',
+    icon: '🏡',
+    image: '/images/excavation.jpg',
+    description: 'Professional excavation services for villa construction'
+  },
+  {
+    name: 'Steel Fabrication',
+    rating: 4.8,
+    reviews: '680+',
+    icon: '⚒️',
+    image: '/images/steel.jpg',
+    description: 'Custom steel fabrication and installation'
+  },
+  {
+    name: 'Farm Shedding',
+    rating: 4.6,
+    reviews: '320+',
+    icon: '🌾',
+    image: '/images/farm.jpg',
+    description: 'Construction of durable farm sheds and structures'
+  },
+  {
+    name: 'Project Pouring',
+    rating: 4.7,
+    reviews: '540+',
+    icon: '🏢',
+    image: '/images/pouring.jpg',
+    description: 'Professional concrete pouring for large projects'
+  }
+];
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -150,17 +206,23 @@ export default function Home() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
-    beforeChange: (current: number, next: number) => setCurrentSlide(next),
+    autoplaySpeed: 8000,
+    beforeChange: (_: number, next: number) => setCurrentSlide(next),
     arrows: true,
     fade: true,
     cssEase: 'linear'
   };
 
+  const scrollToServices = () => {
+    const el = document.getElementById('services');
+    el?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen pt-16 scroll-smooth">
       <Navbar />
-      
+
+      {/* Hero Carousel */}
       <section className="relative h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
         <Slider {...settings}>
           {carouselImages.map((image, index) => (
@@ -178,15 +240,23 @@ export default function Home() {
                   <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
                     MCB Mustafa Contractor & Builder
                   </h1>
-                  <p className="text-lg sm:text-xl mb-8">
+                  <p className="text-lg sm:text-xl mb-6">
                     Your Trusted Partner for Quality Construction and Home Improvement
                   </p>
-                  <Link
-                    href="/contact"
-                    className="inline-block px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                  >
-                    Get Started
-                  </Link>
+                  <div className="flex justify-center gap-4">
+                    <Link
+                      href="/contact"
+                      className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    >
+                      Get Started
+                    </Link>
+                    <button
+                      onClick={scrollToServices}
+                      className="px-6 py-2 bg-white text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50"
+                    >
+                      Explore Services
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,44 +264,52 @@ export default function Home() {
         </Slider>
       </section>
 
-      {/* Popular Projects Section */}
-      <section className="py-12 bg-gray-50">
+   {/* Aboutus */}
+
+
+      {/* Our Services */}
+      <section id="services" className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
             Our Services
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {popularProjects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
-              >
-                <div className="relative h-40 mb-4">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
+            {popularProjects.map((project, index) => {
+              const slug = project.name.toLowerCase().replace(/ /g, '-');
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow flex flex-col"
+                >
+                  <div className="relative h-40 mb-4">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                  <div className="text-4xl mb-4">{project.icon}</div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    {project.name}
+                  </h3>
+                  <div className="flex items-center mb-4">
+                    <span className="text-yellow-400">★</span>
+                    <span className="ml-1 text-gray-600">
+                      {project.rating} ({project.reviews})
+                    </span>
+                  </div>
+                  <div className="mt-auto">
+                    <WhatsAppButton serviceName={project.name} />
+                  </div>
                 </div>
-                <div className="text-4xl mb-4">{project.icon}</div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  {project.name}
-                </h3>
-                <div className="flex items-center mb-2">
-                  <span className="text-yellow-400">★</span>
-                  <span className="ml-1 text-gray-600">
-                    {project.rating} ({project.reviews})
-                  </span>
-                </div>
-                <p className="text-gray-600">from ${project.price}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Popular Home Projects Section */}
+      {/* Featured Projects */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
@@ -241,7 +319,7 @@ export default function Home() {
             {homeProjects.map((project, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col"
               >
                 <div className="relative h-48 mb-4">
                   <Image
@@ -260,15 +338,17 @@ export default function Home() {
                     {project.rating} ({project.reviews})
                   </span>
                 </div>
-                <p className="text-gray-600">from ${project.price}</p>
-                <p className="text-sm text-gray-500 mt-2">{project.category}</p>
+                <p className="text-sm text-gray-500 mb-4">{project.category}</p>
+                <div className="mt-auto">
+                  <WhatsAppButton serviceName={project.name} />
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Keep Your Home Section */}
+      {/* Maintenance Services */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
@@ -278,7 +358,7 @@ export default function Home() {
             {maintenanceServices.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 hover:shadow-md transition-shadow"
+                className="bg-white rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col"
               >
                 <div className="relative h-48 mb-4">
                   <Image
@@ -297,13 +377,108 @@ export default function Home() {
                     {service.rating} ({service.reviews})
                   </span>
                 </div>
-                <p className="text-gray-600">from ${service.price}</p>
-                <p className="text-sm text-gray-500 mt-2">{service.category}</p>
+                <p className="text-sm text-gray-500 mb-4">{service.category}</p>
+                <div className="mt-auto">
+                  <WhatsAppButton serviceName={service.name} />
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Specialized Services Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
+            Specialized Services
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+            Discover our specialized construction and renovation services, delivered with expertise and precision
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {specializedServices.map((service, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow flex flex-col"
+              >
+                <div className="relative h-48 mb-4">
+                  <Image
+                    src={service.image}
+                    alt={service.name}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <div className="flex items-center mb-4">
+                  <span className="text-yellow-400">★</span>
+                  <span className="ml-1 text-gray-600">
+                    {service.rating} ({service.reviews})
+                  </span>
+                </div>
+                <div className="mt-auto">
+                  <WhatsAppButton serviceName={service.name} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Show More Services Button */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Link
+            href="/services"
+            className="inline-block px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-lg font-medium"
+          >
+            Show More Services
+          </Link>
+        </div>
+      </section>
+         {/* Testimonials Section */}
+         <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-4">Client Testimonials</h2>
+            <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+              What our clients say about our work
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-4">{testimonial.text}</p>
+                  <div className="flex text-yellow-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <span key={i}>★</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       <Footer />
     </main>

@@ -7,6 +7,30 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const testimonials = [
+  {
+    name: 'Ahmed Khan',
+    role: 'Business Owner',
+    image: '/images/testimonial1.jpg',
+    text: 'MCB delivered our factory project on time and within budget. Their attention to detail and quality of work is exceptional.',
+    rating: 5
+  },
+  {
+    name: 'Ismail Abdul Kareem',
+    role: 'Property Developer',
+    image: '/images/testimonial2.jpg',
+    text: 'The villa construction exceeded our expectations. The team was professional and the end result is stunning.',
+    rating: 4
+  },
+  {
+    name: 'Usman Ali',
+    role: 'Real Estate Investor',
+    image: '/images/testimonial3.jpg',
+    text: 'We\'ve worked with MCB on multiple highrise projects. Their expertise in large-scale construction is unmatched.',
+    rating: 5
+  }
+];
+
 const carouselImages = [
   '/images/concrete.jpg',
   '/images/windows.jpg',
@@ -186,6 +210,44 @@ export default function About() {
 
         </div>
       </section>
+        {/* Testimonials Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-4">Client Testimonials</h2>
+            <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+              What our clients say about our work
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-xl"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-4">{testimonial.text}</p>
+                  <div className="flex text-yellow-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <span key={i}>★</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       <Footer />
     </main>

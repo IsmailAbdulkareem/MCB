@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import FixedWhatsAppButton from './components/FixedWhatsAppButton';
 
 // Clerk Imports
 import { ClerkProvider, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,7 +57,7 @@ export default function RootLayout({
           {children}
 
           {/* WhatsApp Floating Button */}
-          <WhatsAppButton />
+          <FixedWhatsAppButton />
         </body>
       </html>
     </ClerkProvider>

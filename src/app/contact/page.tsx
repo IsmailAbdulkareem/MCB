@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Slider from 'react-slick';
+import toast, { Toaster } from 'react-hot-toast';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -44,10 +45,39 @@ export default function Contact() {
     cssEase: 'linear'
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+    const loadingToast = toast.loading('Sending message...');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Clear form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+
+      toast.dismiss(loadingToast);
+      toast.success('Message sent successfully!');
+    } catch (error) {
+      toast.dismiss(loadingToast);
+      toast.error('Failed to send message. Please try again.');
+      console.error('Error sending message:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,6 +90,30 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen pt-16">
+      <Toaster 
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#4aed88',
+              secondary: '#fff',
+            },
+          },
+          error: {
+            duration: 3000,
+            iconTheme: {
+              primary: '#ff4b4b',
+              secondary: '#fff',
+            },
+          },
+        }}
+      />
       <Navbar />
       
       <section className="relative h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
@@ -96,21 +150,17 @@ export default function Contact() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Address</h3>
-                  <p className="text-gray-600">123 Construction Street, Building City, BC 12345</p>
-                </div>
-                <div>
                   <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">(123) 456-7890</p>
+                  <p className="text-gray-600">+92 3052200135</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@mcbcontractor.com</p>
+                  <p className="text-gray-600">031@g.mail.com</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Business Hours</h3>
-                  <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
+                  <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM To</p>
+                  <p className="text-gray-600">Saturday: 8:00 AM - 6:00 PM</p>
                   <p className="text-gray-600">Sunday: Closed</p>
                 </div>
               </div>
@@ -172,16 +222,36 @@ export default function Contact() {
                     required
                   >
                     <option value="">Select a service</option>
-                    <option value="handyperson">Handyperson Services</option>
                     <option value="plumbing">Plumbing</option>
                     <option value="electrical">Electrical</option>
-                    <option value="remodeling">Remodeling</option>
                     <option value="roofing">Roofing</option>
-                    <option value="painting">Painting</option>
-                    <option value="cleaning">Cleaning</option>
-                    <option value="hvac">HVAC</option>
+                    <option value="handyman">Handyman</option>
+                    <option value="remodeling">Remodeling</option>
                     <option value="windows">Windows</option>
                     <option value="concrete">Concrete</option>
+                    <option value="aluminum-work">Aluminum Work</option>
+                    <option value="door-installation">Door Installation</option>
+                    <option value="villa-excavation">Villa Excavation</option>
+                    <option value="steel-fabrication">Steel Fabrication</option>
+                    <option value="farm-shedding">Farm Shedding</option>
+                    <option value="project-pouring">Project Pouring</option>
+                    <option value="tile-installation">Tile Installation</option>
+                    <option value="block-masonry">Block Masonry</option>
+                    <option value="bamboo-plaster">Bamboo Plaster</option>
+                    <option value="painting-services">Painting Services</option>
+                    <option value="door-polish">Door Polish</option>
+                    <option value="stone-elevation">Stone Elevation</option>
+                    <option value="ms-fabrication">MS Fabrication</option>
+                    <option value="ss-railing">SS Railing</option>
+                    <option value="marble-stairs">Marble Stairs</option>
+                    <option value="electrical-conduit">Electrical Conduit</option>
+                    <option value="main-gate">Main Gate Installation</option>
+                    <option value="plumbing-conduit">Plumbing Conduit</option>
+                    <option value="sanitary-installation">Sanitary Installation</option>
+                    <option value="car-painting">Carpainting</option>
+                    <option value="kitchen-wardrobe">Kitchen Wardrobe</option>
+                    <option value="garden-design">Garden Design</option>
+                    <option value="camera-installation">Camera Installation</option>
                   </select>
                 </div>
                 <div>
