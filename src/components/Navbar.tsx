@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,24 +41,38 @@ export default function Navbar() {
             </SignedIn>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="sm:hidden p-2 rounded-md text-gray-600 hover:text-gray-800"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile Right Side: Login/User Icon + Hamburger */}
+          <div className="flex items-center sm:hidden space-x-2">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="p-1 rounded-md text-blue-600 hover:text-blue-800 transition text-sm font-medium">
+                  Login
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-md text-gray-600 hover:text-gray-800"
             >
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -70,16 +84,6 @@ export default function Navbar() {
           <NavLink href="/projects" mobile>Projects</NavLink>
           <NavLink href="/faq" mobile>FAQ</NavLink>
           <NavLink href="/contact" mobile>Contact</NavLink>
-          <SignedOut>
-            <SignInButton mode="modal">
-              <button className="block w-full text-left text-sm text-blue-600 font-medium hover:text-blue-700 transition">
-                Login
-              </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
         </div>
       )}
     </nav>
