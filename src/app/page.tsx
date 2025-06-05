@@ -277,10 +277,12 @@ export default function Home() {
 
     <div className="grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <img
-          src="/images/about-construction.jpg" // Replace with your local image or URL
+        <Image
+          src="/images/bungalow2.jpg"
           alt="About Mustafa Contractor"
-          className="rounded-2xl shadow-lg"
+          width={600}
+          height={400}
+          className="rounded-2xl shadow-lg object-cover"
         />
       </div>
 
@@ -288,7 +290,7 @@ export default function Home() {
         <h3 className="text-2xl font-semibold text-gray-800 mb-4">Your One-Stop Solution for Home & Commercial Projects</h3>
         <p className="text-gray-700 leading-relaxed mb-4">
           At <strong>MCB Mustafa Contractor & Builder</strong>, we take pride in offering top-notch services in home construction, renovation, and general maintenance. 
-          Whether it’s building your dream home or fixing a leaky pipe, our expert team ensures quality workmanship at affordable rates.
+          Whether it's building your dream home or fixing a leaky pipe, our expert team ensures quality workmanship at affordable rates.
         </p>
         <p className="text-gray-700 leading-relaxed mb-4">
           We specialize in:
