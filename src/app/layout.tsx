@@ -16,20 +16,20 @@ import {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mustafa Builder & Contractor | Trusted Home Repair Services",
+  title: "MCB Mustafa Contractor & Builder | Trusted Home Repair Services",
   description:
     "Reliable home construction, handyman, plumbing, electrical, and landscaping services. Book professional repair and building services with MCB today!",
   keywords:
     "Home repair, construction services, contractor, handyman, plumbing, electrical, landscaping, renovation, building contractor, Karachi home services",
   openGraph: {
-    title: "Mustafa Builder & Contractor | Trusted Home Repair Services",
+    title: "MCB Contractor & Builder - Expert Home Repair",
     description:
       "Find expert construction, plumbing, electric, and home renovation services at MCB. Affordable and reliable home solutions.",
-    url: "https://www.mustafabuilderanddeveloper.com.pk/",
+    url: "https://yourwebsite.com", // replace with your actual domain
     siteName: "MCB Contractor & Builder",
     images: [
       {
-        url: "https://www.mustafabuilderanddeveloper.com.pk/images/MCB-logo.jpg",
+        url: "https://www.mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
         width: 800,
         height: 600,
         alt: "MCB Home Services",
@@ -57,7 +57,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LocalBusiness",
                 "name": "MCB Mustafa Contractor & Builder",
-                "image": "https://mustafabuilderanddeveloper.com.pk/logo.png",
+                "image": "https://mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
                 "address": {
                   "@type": "PostalAddress",
                   "streetAddress": "DHA KARACHI/ BHARIA TOWN", 
