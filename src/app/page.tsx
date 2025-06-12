@@ -266,6 +266,49 @@ export default function Home() {
 
    {/* Aboutus */}
 
+<section className="py-16 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">About Mustafa Contractor & Builder</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        Trusted by hundreds of clients across Karachi, MCB brings years of experience, craftsmanship, and care to every project.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <Image
+          src="/images/bungalow2.jpg"
+          alt="About Mustafa Contractor"
+          width={600}
+          height={400}
+          className="rounded-2xl shadow-lg object-cover"
+        />
+      </div>
+
+      <div>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Your One-Stop Solution for Home & Commercial Projects</h3>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          At <strong>MCB Mustafa Contractor & Builder</strong>, we take pride in offering top-notch services in home construction, renovation, and general maintenance. 
+          Whether it's building your dream home or fixing a leaky pipe, our expert team ensures quality workmanship at affordable rates.
+        </p>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          We specialize in:
+        </p>
+        <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
+          <li>Home & Commercial Construction</li>
+          <li>Electrician & Plumbing Services</li>
+          <li>Aluminum Fittings & Window Installations</li>
+          <li>Carpentry, Painting & Maintenance Work</li>
+          <li>Tile & Marble Fixing, POP & Ceiling Work</li>
+        </ul>
+        <p className="text-gray-700 leading-relaxed">
+          With a commitment to transparency, professionalism, and timely delivery, we aim to be the go-to solution for every household and business in Karachi. Let us help you build and maintain the spaces you care about.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Our Services */}
       <section id="services" className="py-12 bg-gray-50">
