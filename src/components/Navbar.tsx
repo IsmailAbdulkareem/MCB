@@ -14,7 +14,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/mcb_company_logo.png"
+              src="/images/MCB-logo.jpg"
               alt="MCB Company Logo"
               width={45}
               height={45}

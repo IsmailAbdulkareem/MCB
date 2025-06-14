@@ -16,25 +16,26 @@ import {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MCB Mustafa Contractor & Builder | Trusted Home Repair Services",
+  title: "Mustafa Builder & Developer | Construction & Home Repair Experts in Karachi",
   description:
-    "Reliable home construction, handyman, plumbing, electrical, and landscaping services. Book professional repair and building services with MCB today!",
+    "Professional construction, renovation, handyman, plumbing, electrical, and landscaping services in Karachi and across Pakistan. Trusted by homeowners and businesses alike.",
   keywords:
-    "Home repair, construction services, contractor, handyman, plumbing, electrical, landscaping, renovation, building contractor, Karachi home services",
+    "Mustafa Builder, Mustafa Builders, Mustafa Contractor, contractor in Karachi, builder in Karachi, home construction Karachi, house repair Karachi, renovation services Karachi, handyman Karachi, plumber Karachi, electrician Karachi, landscaping Karachi, construction company Karachi, developer in Karachi, building maintenance Karachi, affordable home repair Karachi, MCB Builder Karachi, Karachi contractors, Karachi developers",
   openGraph: {
-    title: "MCB Contractor & Builder - Expert Home Repair",
+    title: "Mustafa Builder & Developer | Trusted Home Services in Karachi",
     description:
-      "Find expert construction, plumbing, electric, and home renovation services at MCB. Affordable and reliable home solutions.",
-    url: "https://yourwebsite.com", // replace with your actual domain
-    siteName: "MCB Contractor & Builder",
+      "Experience reliable home construction, renovation, plumbing, electrical, and landscaping services with Mustafa Builder & Developer. Book professional help in Karachi today.",
+    url: "https://www.mustafabuilderanddeveloper.com.pk",
+    siteName: "Mustafa Builder & Developer",
     images: [
       {
         url: "https://www.mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
         width: 800,
         height: 600,
-        alt: "MCB Home Services",
+        alt: "Mustafa Builder & Developer Logo",
       },
     ],
+  
     locale: "en_US",
     type: "website",
   },

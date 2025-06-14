@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.mustafabuilderanddeveloper.com.pk
+
+# Sitemaps
+Sitemap: https://www.mustafabuilderanddeveloper.com.pk/sitemap.xml
