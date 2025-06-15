@@ -35,9 +35,19 @@ export const metadata: Metadata = {
         alt: "Mustafa Builder & Developer Logo",
       },
     ],
-  
     locale: "en_US",
     type: "website",
+  },
+
+  // ✅ THIS is the fix!
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -61,7 +71,7 @@ export default function RootLayout({
                 "image": "https://mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "DHA KARACHI/ BHARIA TOWN", 
+                  "streetAddress": "DHA KARACHI/ BHARIA TOWN",
                   "addressLocality": "Karachi",
                   "addressRegion": "Sindh",
                   "addressCountry": "PK"
@@ -74,7 +84,6 @@ export default function RootLayout({
           />
         </head>
         <body className={inter.className}>
-          {/* Top Right Auth Buttons */}
           <header className="flex justify-end items-center p-4 gap-4 h-16 shadow-sm">
             <SignedOut>
               <SignInButton />
@@ -85,10 +94,7 @@ export default function RootLayout({
             </SignedIn>
           </header>
 
-          {/* Page Content */}
           {children}
-
-          {/* WhatsApp Floating Button */}
           <FixedWhatsAppButton />
         </body>
       </html>
