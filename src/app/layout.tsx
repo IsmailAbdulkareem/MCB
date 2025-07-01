@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Mustafa Builder & Developer",
     images: [
       {
-        url: "https://www.mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
+        url: "https://www.mustafabuilderanddeveloper.com.pk/images/MCB_logo.jpg",
         width: 800,
         height: 600,
         alt: "Mustafa Builder & Developer Logo",

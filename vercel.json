@@ -1,0 +1,10 @@
+{
+    "redirects": [
+      {
+        "source": "https://mustafabuilderanddeveloper.com.pk/:path*",
+        "destination": "https://www.mustafabuilderanddeveloper.com.pk/:path*",
+        "permanent": true
+      }
+    ]
+  }
+  
