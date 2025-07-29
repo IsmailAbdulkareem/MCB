@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -38,8 +39,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-
-  // ✅ THIS is the fix!
   robots: {
     index: true,
     follow: true,
@@ -60,7 +59,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <head>
-          {/* JSON-LD Structured Data */}
+          {/* ✅ Google AdSense verification script */}
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1209432266036416"
+            crossOrigin="anonymous"
+          ></script>
+
+          {/* ✅ JSON-LD Structured Data */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

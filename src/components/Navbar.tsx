@@ -29,6 +29,7 @@ export default function Navbar() {
             <NavLink href="/projects">Projects</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <NavLink href="/contact">Contact</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
             <SignedOut>
               <SignInButton mode="modal">
                 <button className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
@@ -84,6 +85,7 @@ export default function Navbar() {
           <NavLink href="/projects" mobile>Projects</NavLink>
           <NavLink href="/faq" mobile>FAQ</NavLink>
           <NavLink href="/contact" mobile>Contact</NavLink>
+          <NavLink href="/blog" mobile>Blog</NavLink>
         </div>
       )}
     </nav>
