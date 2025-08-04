@@ -2,6 +2,7 @@
 const nextConfig = {
   trailingSlash: false,
 
+
   async headers() {
     return [
       {
@@ -9,12 +10,12 @@ const nextConfig = {
         headers: [
           {
             key: "X-Robots-Tag",
-            value: "index, follow",
           },
         ],
       },
     ];
   },
+
 
   async redirects() {
     return [

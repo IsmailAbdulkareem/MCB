@@ -1,8 +1,9 @@
-// app/sitemap.ts
+// src/app/sitemap.ts
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [    {
+  return [
+    {
       url: 'https://www.mustafabuilderanddeveloper.com.pk/',
       lastModified: new Date(),
       changeFrequency: 'monthly',
