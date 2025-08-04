@@ -2,8 +2,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
+  return [    {
       url: 'https://www.mustafabuilderanddeveloper.com.pk/',
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -38,6 +37,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: 'https://www.mustafabuilderanddeveloper.com.pk/blog',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
     },
   ];
 }
