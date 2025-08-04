@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -59,33 +58,77 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <head>
-          {/* ✅ Google AdSense verification script */}
+          {/* ✅ Google AdSense */}
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1209432266036416"
             crossOrigin="anonymous"
           ></script>
 
-          {/* ✅ JSON-LD Structured Data */}
+          {/* ✅ Enhanced JSON-LD Structured Data */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "LocalBusiness",
-                "name": "MCB Mustafa Contractor & Builder",
-                "image": "https://mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "DHA KARACHI/ BHARIA TOWN",
-                  "addressLocality": "Karachi",
-                  "addressRegion": "Sindh",
-                  "addressCountry": "PK"
+              __html: JSON.stringify([
+                {
+                  "@context": "https://schema.org",
+                  "@type": "Organization",
+                  name: "Mustafa Builder & Developer",
+                  url: "https://www.mustafabuilderanddeveloper.com.pk",
+                  logo: "https://www.mustafabuilderanddeveloper.com.pk/images/MCB_logo.jpg",
+                  sameAs: [
+                    "https://facebook.com/yourpage",
+                    "https://instagram.com/yourpage",
+                    "https://wa.me/923052200135"
+                  ]
                 },
-                "telephone": "+92-305-2200135",
-                "url": "https://mustafabuilderanddeveloper.com.pk",
-                "openingHours": "Mo-Sa 09:00-18:00"
-              })
+                {
+                  "@context": "https://schema.org",
+                  "@type": "WebSite",
+                  name: "Mustafa Builder & Developer",
+                  url: "https://www.mustafabuilderanddeveloper.com.pk",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: "https://www.mustafabuilderanddeveloper.com.pk/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                },
+                {
+                  "@context": "https://schema.org",
+                  "@type": "LocalBusiness",
+                  name: "MCB Mustafa Contractor & Builder",
+                  image: "https://www.mustafabuilderanddeveloper.com.pk/images/mcb_company_logo.png",
+                  telephone: "+92-305-2200135",
+                  url: "https://www.mustafabuilderanddeveloper.com.pk",
+                  priceRange: "PKR",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "DHA Karachi / Bahria Town",
+                    addressLocality: "Karachi",
+                    addressRegion: "Sindh",
+                    postalCode: "75000",
+                    addressCountry: "PK"
+                  },
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: "24.8607",
+                    longitude: "67.0011"
+                  },
+                  openingHoursSpecification: {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday"
+                    ],
+                    opens: "09:00",
+                    closes: "18:00"
+                  }
+                }
+              ])
             }}
           />
         </head>
