@@ -2,28 +2,33 @@
 const nextConfig = {
   trailingSlash: false,
 
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "index, follow", // ✅ FIXED: Added string value
-          },
-        ],
-      },
-    ];
-  },
-
   async redirects() {
     return [
+      {
+        // Redirect non-www and http to https://www version
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "mustafabuilderanddeveloper.com.pk", // non-www
+          },
+        ],
+        destination: "https://www.mustafabuilderanddeveloper.com.pk/:path*",
+        permanent: true,
+      },
       {
         source: "/:path*",
         has: [
           {
             type: "host",
-            value: "mustafabuilderanddeveloper.com.pk",
+            value: "www.mustafabuilderanddeveloper.com.pk",
+          },
+        ],
+        missing: [
+          {
+            type: "header",
+            key: "x-forwarded-proto",
+            value: "https",
           },
         ],
         destination: "https://www.mustafabuilderanddeveloper.com.pk/:path*",
@@ -33,4 +38,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
