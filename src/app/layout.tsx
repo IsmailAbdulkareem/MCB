@@ -64,7 +64,8 @@ export default function RootLayout({
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1209432266036416"
             crossOrigin="anonymous"
           ></script>
-
+   {/* ✅ Bing Site Verification */}
+   <meta name="msvalidate.01" content="48AA4BCA20D64244FF6612424DA395DF" />
           {/* ✅ Enhanced JSON-LD Structured Data */}
           <script
             type="application/ld+json"
