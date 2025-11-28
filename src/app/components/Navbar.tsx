@@ -1,5 +1,6 @@
 "use client";
 
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -27,11 +28,9 @@ export default function Navbar() {
                             alt="MCB Construction Logo"
                             width={60}
                             height={60}
-                            className="h-14 w-auto object-contain"
+                            className="h-10 w-auto object-contain"
                         />
-                        <span className="ml-3 text-xl font-bold text-gray-900">
-                            MCB Construction
-                        </span>
+                       
                     </Link>
 
                     {/* Desktop Navigation */}
